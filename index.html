@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 320px;
+        }
+
+        .calculator-screen {
+            width: 100%;
+            height: 60px;
+            background-color: #252525;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            text-align: right;
+            padding: 10px;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .calculator-keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        .calculator-keys button {
+            height: 60px;
+            background-color: #f1f3f4;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .calculator-keys button:hover {
+            background-color: #d1d9db;
+        }
+
+        .calculator-keys button.operation {
+            background-color: #ff9f43;
+            color: white;
+        }
+
+        .calculator-keys button.operation:hover {
+            background-color: #ff7f0f;
+        }
+
+        .calculator-keys button.equal-sign {
+            grid-column: span 2;
+            background-color: #00c851;
+            color: white;
+        }
+
+        .calculator-keys button.equal-sign:hover {
+            background-color: #00b041;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" class="calculator-screen" id="screen" readonly>
+        
+        <div class="calculator-keys">
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button class="operation" value="+">+</button>
+            
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button class="operation" value="-">-</button>
+            
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button class="operation" value="*">*</button>
+            
+            <button value="0">0</button>
+            <button value=".">.</button>
+            <button class="equal-sign" value="=">=</button>
+            <button class="operation" value="/">/</button>
+        </div>
+    </div>
+
+    <script>
+        const screen = document.getElementById('screen');
+        const buttons = document.querySelectorAll('button');
+        let screenValue = '';
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const buttonValue = button.value;
+                if (buttonValue === '=') {
+                    screen.value = eval(screenValue);
+                } else if (buttonValue === 'C') {
+                    screenValue = '';
+                    screen.value = '';
+                } else {
+                    screenValue += buttonValue;
+                    screen.value = screenValue;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
