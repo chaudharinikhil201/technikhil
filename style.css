@@ -1,0 +1,74 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Color Theme */
+:root {
+    --primary-color: #4499FF;
+    --secondary-color: #FFA500;
+    --light-gray: #F3F3F3;
+    --text-color: #333;
+    --card-background: #FFFFFF;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+}
+
+/* Sensor Grid Styling */
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+/* Sensor Card Styling */
+.sensor-card {
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sensor-card h2 {
+    font-size: 20px;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+.sensor-card p {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 40px;
+    color: var(--secondary-color);
+}
+
+.thermostat-icon:before { content: "🌡️"; }
+.water-icon:before { content: "💧"; }
+.pm-icon:before { content: "🌫️"; }
+.fire-icon:before { content: "🔥"; }
+.smoke-icon:before { content: "🚬"; }
+.lpg-icon:before { content: "⚠️"; }
+.vibration-icon:before { content: "📳"; }
