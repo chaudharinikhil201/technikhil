@@ -3,126 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-
-        .calculator {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 320px;
-        }
-
-        .calculator-screen {
-            width: 100%;
-            height: 60px;
-            background-color: #252525;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            text-align: right;
-            padding: 10px;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .calculator-keys {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-        }
-
-        .calculator-keys button {
-            height: 60px;
-            background-color: #f1f3f4;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .calculator-keys button:hover {
-            background-color: #d1d9db;
-        }
-
-        .calculator-keys button.operation {
-            background-color: #ff9f43;
-            color: white;
-        }
-
-        .calculator-keys button.operation:hover {
-            background-color: #ff7f0f;
-        }
-
-        .calculator-keys button.equal-sign {
-            grid-column: span 2;
-            background-color: #00c851;
-            color: white;
-        }
-
-        .calculator-keys button.equal-sign:hover {
-            background-color: #00b041;
-        }
-    </style>
+    <title>IoT Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 </head>
 <body>
+    <header>
+        <h1>IoT Monitor & Control</h1>
+    </header>
+    
+    <main>
+        <section class="sensor-grid">
+            <div class="sensor-card">
+                <i class="icon thermostat-icon"></i>
+                <p>Temperature</p>
+                <h2 id="temperature">-- °C</h2>
+            </div>
+            <div class="sensor-card">
+                <i class="icon water-icon"></i>
+                <p>Humidity</p>
+                <h2 id="humidity">-- %</h2>
+            </div>
+            <div class="sensor-card">
+                <i class="icon pm-icon"></i>
+                <p>PM2.5</p>
+                <h2 id="pm25">-- µg/m³</h2>
+            </div>
+            <div class="sensor-card">
+                <i class="icon fire-icon"></i>
+                <p>Fire</p>
+                <h2 id="fire">No</h2>
+            </div>
+            <div class="sensor-card">
+                <i class="icon smoke-icon"></i>
+                <p>Smoke</p>
+                <h2 id="smoke">No</h2>
+            </div>
+            <div class="sensor-card">
+                <i class="icon lpg-icon"></i>
+                <p>LPG Leakage</p>
+                <h2 id="lpg">No</h2>
+            </div>
+            <div class="sensor-card">
+                <i class="icon vibration-icon"></i>
+                <p>Vibration</p>
+                <h2 id="vibration">No</h2>
+            </div>
+        </section>
+    </main>
 
-    <div class="calculator">
-        <input type="text" class="calculator-screen" id="screen" readonly>
-        
-        <div class="calculator-keys">
-            <button value="7">7</button>
-            <button value="8">8</button>
-            <button value="9">9</button>
-            <button class="operation" value="+">+</button>
-            
-            <button value="4">4</button>
-            <button value="5">5</button>
-            <button value="6">6</button>
-            <button class="operation" value="-">-</button>
-            
-            <button value="1">1</button>
-            <button value="2">2</button>
-            <button value="3">3</button>
-            <button class="operation" value="*">*</button>
-            
-            <button value="0">0</button>
-            <button value=".">.</button>
-            <button class="equal-sign" value="=">=</button>
-            <button class="operation" value="/">/</button>
-        </div>
-    </div>
-
-    <script>
-        const screen = document.getElementById('screen');
-        const buttons = document.querySelectorAll('button');
-        let screenValue = '';
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const buttonValue = button.value;
-                if (buttonValue === '=') {
-                    screen.value = eval(screenValue);
-                } else if (buttonValue === 'C') {
-                    screenValue = '';
-                    screen.value = '';
-                } else {
-                    screenValue += buttonValue;
-                    screen.value = screenValue;
-                }
-            });
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
